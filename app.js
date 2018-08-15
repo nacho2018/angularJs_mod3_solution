@@ -44,11 +44,14 @@
          }).then(function(response){
             var foundItems = [];
             var items = response.data.menu_items;
-            items.forEach(function(element){
-              if (existsSearchTermInString(searchTerm, element.description)){
-                foundItems.push(element);
-              }
-            });
+            if (searchTerm){
+              items.forEach(function(element){
+                if (existsSearchTermInString(searchTerm, element.description)){
+                  foundItems.push(element);
+                }
+              });
+            }
+
             return foundItems;
         });
   }
